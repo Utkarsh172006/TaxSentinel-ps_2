@@ -1,0 +1,14 @@
+{
+  "money_tolerance_rupees": 1.0,
+  "open_item_after": "2026-08-25",
+  "payment_delay_max_days": 45,
+  "duplicate_near_days": 3,
+  "gstin_checksum_character": "Z",
+  "anomaly": {
+    "isolation_forest_contamination": 0.02,
+    "vendor_robust_z_threshold": 4.0,
+    "new_vendor_huge_invoice_rupees": 500000.0,
+    "approval_threshold_rupees": 100000.0,
+    "approval_threshold_window_rupees": 5000.0
+  }
+}

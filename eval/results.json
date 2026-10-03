@@ -1,0 +1,2492 @@
+{
+  "protocol": {
+    "training_data": [
+      "seed-11",
+      "seed-12",
+      "seed-13"
+    ],
+    "validation_data": [
+      "seed-14"
+    ],
+    "heldout_evaluation": [
+      "test_a",
+      "test_b"
+    ],
+    "test_sets_used_for_training_or_tuning": false,
+    "liability_reference": "clean source tables isolated under each split/reference/",
+    "issue_scoring": "mapped injected error types and source row identifiers",
+    "matching_baseline": "exact normalized invoice number and amount only"
+  },
+  "datasets": {
+    "validation": {
+      "issue_detection": {
+        "overall": {
+          "tp": 416,
+          "fp": 990,
+          "fn": 47,
+          "precision": 0.2958748221906117,
+          "recall": 0.8984881209503239,
+          "f1": 0.4451578384162655
+        },
+        "grouped_metrics": {
+          "payment_amount": {
+            "tp": 69,
+            "fp": 300,
+            "fn": 0,
+            "precision": 0.18699186991869918,
+            "recall": 1.0,
+            "f1": 0.3150684931506849,
+            "error_types": [
+              "amount_mismatch_large",
+              "amount_mismatch_small",
+              "bank_amount_mismatch",
+              "rounding_diff",
+              "short_payment_tds"
+            ],
+            "detector_issue_types": [
+              "invoice_total_mismatch",
+              "ledger_amount_mismatch",
+              "overpayment",
+              "short_payment"
+            ],
+            "labeled_errors": 69
+          },
+          "anomaly": {
+            "tp": 45,
+            "fp": 482,
+            "fn": 15,
+            "precision": 0.08538899430740038,
+            "recall": 0.75,
+            "f1": 0.1533219761499148,
+            "error_types": [
+              "anomaly_approval_threshold",
+              "anomaly_round_number",
+              "anomaly_unusual_spike",
+              "new_vendor_huge_invoice"
+            ],
+            "detector_issue_types": [
+              "anomaly_approval_threshold",
+              "anomaly_behavioral",
+              "anomaly_round_number",
+              "anomaly_unusual_spike",
+              "new_vendor_huge_invoice"
+            ],
+            "labeled_errors": 60
+          },
+          "date_and_period": {
+            "tp": 52,
+            "fp": 7,
+            "fn": 2,
+            "precision": 0.8813559322033898,
+            "recall": 0.9629629629629629,
+            "f1": 0.9203539823008849,
+            "error_types": [
+              "date_shift",
+              "ledger_date_gap",
+              "wrong_tax_period",
+              "payment_before_invoice"
+            ],
+            "detector_issue_types": [
+              "ledger_date_gap",
+              "payment_before_invoice",
+              "wrong_tax_period"
+            ],
+            "labeled_errors": 54
+          },
+          "invoice_duplicates": {
+            "tp": 30,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "error_types": [
+              "duplicate_exact",
+              "duplicate_near"
+            ],
+            "detector_issue_types": [
+              "duplicate_exact",
+              "duplicate_near"
+            ],
+            "labeled_errors": 30
+          },
+          "duplicate_payments": {
+            "tp": 12,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "error_types": [
+              "duplicate_payment"
+            ],
+            "detector_issue_types": [
+              "duplicate_payment"
+            ],
+            "labeled_errors": 12
+          },
+          "filing_tax": {
+            "tp": 15,
+            "fp": 85,
+            "fn": 0,
+            "precision": 0.15,
+            "recall": 1.0,
+            "f1": 0.2608695652173913,
+            "error_types": [
+              "gstr2b_tax_mismatch"
+            ],
+            "detector_issue_types": [
+              "gstr2b_tax_mismatch"
+            ],
+            "labeled_errors": 15
+          },
+          "unbooked_filing": {
+            "tp": 12,
+            "fp": 12,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666,
+            "error_types": [
+              "in_gstr2b_not_in_books"
+            ],
+            "detector_issue_types": [
+              "in_gstr2b_not_in_books"
+            ],
+            "labeled_errors": 12
+          },
+          "gstin": {
+            "tp": 15,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "error_types": [
+              "invalid_gstin"
+            ],
+            "detector_issue_types": [
+              "invalid_gstin"
+            ],
+            "labeled_errors": 15
+          },
+          "invoice_identifier": {
+            "tp": 7,
+            "fp": 29,
+            "fn": 9,
+            "precision": 0.19444444444444445,
+            "recall": 0.4375,
+            "f1": 0.2692307692307693,
+            "error_types": [
+              "invoice_id_variant"
+            ],
+            "detector_issue_types": [
+              "invoice_id_mismatch"
+            ],
+            "labeled_errors": 16
+          },
+          "unreferenced_ledger": {
+            "tp": 12,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571428571428571,
+            "error_types": [
+              "ledger_without_source"
+            ],
+            "detector_issue_types": [
+              "ledger_without_source"
+            ],
+            "labeled_errors": 12
+          },
+          "tax_calculation": {
+            "tp": 25,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "error_types": [
+              "miscalculated_tax"
+            ],
+            "detector_issue_types": [
+              "miscalculated_tax"
+            ],
+            "labeled_errors": 25
+          },
+          "missing_ledger": {
+            "tp": 20,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "error_types": [
+              "missing_ledger_entry"
+            ],
+            "detector_issue_types": [
+              "missing_ledger_entry"
+            ],
+            "labeled_errors": 20
+          },
+          "missing_payment": {
+            "tp": 12,
+            "fp": 31,
+            "fn": 3,
+            "precision": 0.27906976744186046,
+            "recall": 0.8,
+            "f1": 0.4137931034482758,
+            "error_types": [
+              "missing_payment"
+            ],
+            "detector_issue_types": [
+              "missing_payment"
+            ],
+            "labeled_errors": 15
+          },
+          "unreferenced_payment": {
+            "tp": 12,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9230769230769231,
+            "recall": 1.0,
+            "f1": 0.9600000000000001,
+            "error_types": [
+              "payment_without_invoice"
+            ],
+            "detector_issue_types": [
+              "payment_without_invoice"
+            ],
+            "labeled_errors": 12
+          },
+          "supplier_filing": {
+            "tp": 45,
+            "fp": 20,
+            "fn": 0,
+            "precision": 0.6923076923076923,
+            "recall": 1.0,
+            "f1": 0.8181818181818181,
+            "error_types": [
+              "supplier_not_filed"
+            ],
+            "detector_issue_types": [
+              "missing_supplier_filing",
+              "supplier_not_filed"
+            ],
+            "labeled_errors": 45
+          },
+          "vendor_name": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 18,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "error_types": [
+              "vendor_name_variant"
+            ],
+            "detector_issue_types": [
+              "vendor_name_mismatch"
+            ],
+            "labeled_errors": 18
+          },
+          "tax_rate": {
+            "tp": 18,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "error_types": [
+              "wrong_tax_rate"
+            ],
+            "detector_issue_types": [
+              "wrong_tax_rate"
+            ],
+            "labeled_errors": 18
+          },
+          "tax_split": {
+            "tp": 15,
+            "fp": 9,
+            "fn": 0,
+            "precision": 0.625,
+            "recall": 1.0,
+            "f1": 0.7692307692307693,
+            "error_types": [
+              "wrong_tax_split"
+            ],
+            "detector_issue_types": [
+              "wrong_tax_split"
+            ],
+            "labeled_errors": 15
+          }
+        },
+        "per_error_type": {
+          "amount_mismatch_large": {
+            "tp": 15,
+            "fp": 300,
+            "fn": 0,
+            "precision": 0.18699186991869918,
+            "recall": 1.0,
+            "f1": 0.3150684931506849,
+            "labeled_errors": 15,
+            "precision_scope": "shared payment_amount detector issue family"
+          },
+          "amount_mismatch_small": {
+            "tp": 12,
+            "fp": 300,
+            "fn": 0,
+            "precision": 0.18699186991869918,
+            "recall": 1.0,
+            "f1": 0.3150684931506849,
+            "labeled_errors": 12,
+            "precision_scope": "shared payment_amount detector issue family"
+          },
+          "bank_amount_mismatch": {
+            "tp": 12,
+            "fp": 300,
+            "fn": 0,
+            "precision": 0.18699186991869918,
+            "recall": 1.0,
+            "f1": 0.3150684931506849,
+            "labeled_errors": 12,
+            "precision_scope": "shared payment_amount detector issue family"
+          },
+          "rounding_diff": {
+            "tp": 12,
+            "fp": 300,
+            "fn": 0,
+            "precision": 0.18699186991869918,
+            "recall": 1.0,
+            "f1": 0.3150684931506849,
+            "labeled_errors": 12,
+            "precision_scope": "shared payment_amount detector issue family"
+          },
+          "short_payment_tds": {
+            "tp": 18,
+            "fp": 300,
+            "fn": 0,
+            "precision": 0.18699186991869918,
+            "recall": 1.0,
+            "f1": 0.3150684931506849,
+            "labeled_errors": 18,
+            "precision_scope": "shared payment_amount detector issue family"
+          },
+          "anomaly_approval_threshold": {
+            "tp": 7,
+            "fp": 482,
+            "fn": 8,
+            "precision": 0.08538899430740038,
+            "recall": 0.4666666666666667,
+            "f1": 0.14436296975252064,
+            "labeled_errors": 15,
+            "precision_scope": "shared anomaly detector issue family",
+            "cause": "The amount rule is conservative, while the broader vendor and Isolation Forest signals add unrelated anomaly candidates."
+          },
+          "anomaly_round_number": {
+            "tp": 15,
+            "fp": 482,
+            "fn": 0,
+            "precision": 0.08538899430740038,
+            "recall": 1.0,
+            "f1": 0.15734265734265734,
+            "labeled_errors": 15,
+            "precision_scope": "shared anomaly detector issue family",
+            "cause": "Round-number detection is suppressed for vendors whose history already contains many round totals."
+          },
+          "anomaly_unusual_spike": {
+            "tp": 8,
+            "fp": 482,
+            "fn": 7,
+            "precision": 0.08538899430740038,
+            "recall": 0.5333333333333333,
+            "f1": 0.14720915968104684,
+            "labeled_errors": 15,
+            "precision_scope": "shared anomaly detector issue family",
+            "cause": "The robust-z and Isolation Forest signals are broad and miss spikes when vendor history is sparse or skewed."
+          },
+          "new_vendor_huge_invoice": {
+            "tp": 15,
+            "fp": 482,
+            "fn": 0,
+            "precision": 0.08538899430740038,
+            "recall": 1.0,
+            "f1": 0.15734265734265734,
+            "labeled_errors": 15,
+            "precision_scope": "shared anomaly detector issue family",
+            "cause": "The detector depends on the source `is_new_vendor` flag and configured threshold matching the injected high invoice."
+          },
+          "date_shift": {
+            "tp": 13,
+            "fp": 7,
+            "fn": 2,
+            "precision": 0.8813559322033898,
+            "recall": 0.8666666666666667,
+            "f1": 0.8739495798319329,
+            "labeled_errors": 15,
+            "precision_scope": "shared date_and_period detector issue family"
+          },
+          "ledger_date_gap": {
+            "tp": 15,
+            "fp": 7,
+            "fn": 0,
+            "precision": 0.8813559322033898,
+            "recall": 1.0,
+            "f1": 0.936936936936937,
+            "labeled_errors": 15,
+            "precision_scope": "shared date_and_period detector issue family"
+          },
+          "wrong_tax_period": {
+            "tp": 12,
+            "fp": 7,
+            "fn": 0,
+            "precision": 0.8813559322033898,
+            "recall": 1.0,
+            "f1": 0.936936936936937,
+            "labeled_errors": 12,
+            "precision_scope": "shared date_and_period detector issue family"
+          },
+          "payment_before_invoice": {
+            "tp": 12,
+            "fp": 7,
+            "fn": 0,
+            "precision": 0.8813559322033898,
+            "recall": 1.0,
+            "f1": 0.936936936936937,
+            "labeled_errors": 12,
+            "precision_scope": "shared date_and_period detector issue family",
+            "cause": "Detection depends on a bank candidate surviving invoice/reference blocking; unmatched references are not date-compared."
+          },
+          "duplicate_exact": {
+            "tp": 15,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 15,
+            "precision_scope": "shared invoice_duplicates detector issue family"
+          },
+          "duplicate_near": {
+            "tp": 15,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 15,
+            "precision_scope": "shared invoice_duplicates detector issue family"
+          },
+          "duplicate_payment": {
+            "tp": 12,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 12,
+            "precision_scope": "shared duplicate_payments detector issue family"
+          },
+          "gstr2b_tax_mismatch": {
+            "tp": 15,
+            "fp": 85,
+            "fn": 0,
+            "precision": 0.15,
+            "recall": 1.0,
+            "f1": 0.2608695652173913,
+            "labeled_errors": 15,
+            "precision_scope": "shared filing_tax detector issue family"
+          },
+          "in_gstr2b_not_in_books": {
+            "tp": 12,
+            "fp": 12,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666,
+            "labeled_errors": 12,
+            "precision_scope": "shared unbooked_filing detector issue family"
+          },
+          "invalid_gstin": {
+            "tp": 15,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 15,
+            "precision_scope": "shared gstin detector issue family",
+            "cause": "Test B GSTIN values follow different conventions; the strict 15-character/checksum rule is intentionally reported separately."
+          },
+          "invoice_id_variant": {
+            "tp": 7,
+            "fp": 29,
+            "fn": 9,
+            "precision": 0.19444444444444445,
+            "recall": 0.4375,
+            "f1": 0.2692307692307693,
+            "labeled_errors": 16,
+            "precision_scope": "shared invoice_identifier detector issue family"
+          },
+          "ledger_without_source": {
+            "tp": 12,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571428571428571,
+            "labeled_errors": 12,
+            "precision_scope": "shared unreferenced_ledger detector issue family"
+          },
+          "miscalculated_tax": {
+            "tp": 25,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 25,
+            "precision_scope": "shared tax_calculation detector issue family"
+          },
+          "missing_ledger_entry": {
+            "tp": 20,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 20,
+            "precision_scope": "shared missing_ledger detector issue family"
+          },
+          "missing_payment": {
+            "tp": 12,
+            "fp": 31,
+            "fn": 3,
+            "precision": 0.27906976744186046,
+            "recall": 0.8,
+            "f1": 0.4137931034482758,
+            "labeled_errors": 15,
+            "precision_scope": "shared missing_payment detector issue family"
+          },
+          "payment_without_invoice": {
+            "tp": 12,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9230769230769231,
+            "recall": 1.0,
+            "f1": 0.9600000000000001,
+            "labeled_errors": 12,
+            "precision_scope": "shared unreferenced_payment detector issue family"
+          },
+          "supplier_not_filed": {
+            "tp": 45,
+            "fp": 20,
+            "fn": 0,
+            "precision": 0.6923076923076923,
+            "recall": 1.0,
+            "f1": 0.8181818181818181,
+            "labeled_errors": 45,
+            "precision_scope": "shared supplier_filing detector issue family"
+          },
+          "vendor_name_variant": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 18,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "labeled_errors": 18,
+            "precision_scope": "shared vendor_name detector issue family",
+            "cause": "The mismatch rule targets invoice-to-filing names; equivalent company suffix/case variants are normalized and may not be surfaced."
+          },
+          "wrong_tax_rate": {
+            "tp": 18,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 18,
+            "precision_scope": "shared tax_rate detector issue family"
+          },
+          "wrong_tax_split": {
+            "tp": 15,
+            "fp": 9,
+            "fn": 0,
+            "precision": 0.625,
+            "recall": 1.0,
+            "f1": 0.7692307692307693,
+            "labeled_errors": 15,
+            "precision_scope": "shared tax_split detector issue family",
+            "cause": "Test B uses legacy conventions that differ from the Maharashtra CGST/SGST-versus-IGST rule."
+          }
+        },
+        "weakest_error_types": [
+          {
+            "error_type": "vendor_name_variant",
+            "f1": 0.0,
+            "recall": 0.0,
+            "cause": "The mismatch rule targets invoice-to-filing names; equivalent company suffix/case variants are normalized and may not be surfaced."
+          },
+          {
+            "error_type": "anomaly_approval_threshold",
+            "f1": 0.14436296975252064,
+            "recall": 0.4666666666666667,
+            "cause": "The amount rule is conservative, while the broader vendor and Isolation Forest signals add unrelated anomaly candidates."
+          },
+          {
+            "error_type": "anomaly_unusual_spike",
+            "f1": 0.14720915968104684,
+            "recall": 0.5333333333333333,
+            "cause": "The robust-z and Isolation Forest signals are broad and miss spikes when vendor history is sparse or skewed."
+          },
+          {
+            "error_type": "anomaly_round_number",
+            "f1": 0.15734265734265734,
+            "recall": 1.0,
+            "cause": "Round-number detection is suppressed for vendors whose history already contains many round totals."
+          },
+          {
+            "error_type": "new_vendor_huge_invoice",
+            "f1": 0.15734265734265734,
+            "recall": 1.0,
+            "cause": "The detector depends on the source `is_new_vendor` flag and configured threshold matching the injected high invoice."
+          }
+        ],
+        "targets": {
+          "precision_at_least_0_85": false,
+          "recall_at_least_0_90": false,
+          "both_met": false
+        }
+      },
+      "matching": {
+        "model": {
+          "tp": 2945,
+          "fp": 43,
+          "fn": 27,
+          "precision": 0.9856091030789826,
+          "recall": 0.9909152086137282,
+          "f1": 0.988255033557047
+        },
+        "naive_exact_invoice_number_and_amount": {
+          "tp": 2701,
+          "fp": 0,
+          "fn": 271,
+          "precision": 1.0,
+          "recall": 0.9088156123822342,
+          "f1": 0.9522298607438745
+        },
+        "model_match_groups": 2915,
+        "model_matched_invoice_count": 2944,
+        "validation_threshold_curve": [
+          {
+            "threshold": 0.6,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.61,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.62,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.63,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.64,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.65,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.66,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.67,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.68,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.69,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.7,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.71,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.72,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.73,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.74,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.75,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.76,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.77,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.78,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.79,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.8,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.81,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.82,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.83,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.84,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.85,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.86,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.87,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.88,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.89,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.9,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.91,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.92,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.93,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.94,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.95,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.96,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.97,
+            "tp": 2945,
+            "fp": 43,
+            "fn": 27,
+            "precision": 0.9856091030789826,
+            "recall": 0.9909152086137282,
+            "f1": 0.988255033557047
+          },
+          {
+            "threshold": 0.98,
+            "tp": 2876,
+            "fp": 0,
+            "fn": 96,
+            "precision": 1.0,
+            "recall": 0.9676985195154778,
+            "f1": 0.9835841313269494
+          },
+          {
+            "threshold": 0.99,
+            "tp": 2873,
+            "fp": 0,
+            "fn": 99,
+            "precision": 1.0,
+            "recall": 0.9666890982503364,
+            "f1": 0.9830624465355005
+          }
+        ]
+      },
+      "many_to_many": {
+        "tp": 25,
+        "fp": 14,
+        "fn": 14,
+        "precision": 0.6410256410256411,
+        "recall": 0.6410256410256411,
+        "f1": 0.6410256410256411,
+        "exact_group_accuracy": 0.6410256410256411,
+        "expected_groups": 39,
+        "predicted_groups": 39
+      },
+      "anomaly_precision_at_k": {
+        "k": 60,
+        "predictions_available": 527,
+        "relevant_in_top_k": 40,
+        "precision_at_k": 0.6666666666666666
+      },
+      "liability_error": {
+        "net_liability": {
+          "expected_rupees": -4159610.65,
+          "predicted_rupees": -2768195.85,
+          "absolute_error_rupees": 1391414.7999999998,
+          "absolute_error_pct": 33.450601921119706
+        },
+        "itc_at_risk": {
+          "expected_rupees": 0.0,
+          "predicted_rupees": 2269348.83,
+          "absolute_error_rupees": 2269348.83,
+          "absolute_error_pct": null
+        }
+      },
+      "counts": {
+        "invoice_rows": 3030,
+        "bank_rows": 2984,
+        "truth_error_rows": 463,
+        "detected_issue_rows": 1406
+      },
+      "test_b_convention_issue_types_reported_separately": []
+    },
+    "test_a": {
+      "issue_detection": {
+        "overall": {
+          "tp": 422,
+          "fp": 987,
+          "fn": 41,
+          "precision": 0.2995031937544358,
+          "recall": 0.9114470842332614,
+          "f1": 0.45085470085470086
+        },
+        "grouped_metrics": {
+          "payment_amount": {
+            "tp": 69,
+            "fp": 298,
+            "fn": 0,
+            "precision": 0.1880108991825613,
+            "recall": 1.0,
+            "f1": 0.3165137614678899,
+            "error_types": [
+              "amount_mismatch_large",
+              "amount_mismatch_small",
+              "bank_amount_mismatch",
+              "rounding_diff",
+              "short_payment_tds"
+            ],
+            "detector_issue_types": [
+              "invoice_total_mismatch",
+              "ledger_amount_mismatch",
+              "overpayment",
+              "short_payment"
+            ],
+            "labeled_errors": 69
+          },
+          "anomaly": {
+            "tp": 46,
+            "fp": 508,
+            "fn": 14,
+            "precision": 0.08303249097472924,
+            "recall": 0.7666666666666667,
+            "f1": 0.1498371335504886,
+            "error_types": [
+              "anomaly_approval_threshold",
+              "anomaly_round_number",
+              "anomaly_unusual_spike",
+              "new_vendor_huge_invoice"
+            ],
+            "detector_issue_types": [
+              "anomaly_approval_threshold",
+              "anomaly_behavioral",
+              "anomaly_round_number",
+              "anomaly_unusual_spike",
+              "new_vendor_huge_invoice"
+            ],
+            "labeled_errors": 60
+          },
+          "date_and_period": {
+            "tp": 52,
+            "fp": 7,
+            "fn": 2,
+            "precision": 0.8813559322033898,
+            "recall": 0.9629629629629629,
+            "f1": 0.9203539823008849,
+            "error_types": [
+              "date_shift",
+              "ledger_date_gap",
+              "wrong_tax_period",
+              "payment_before_invoice"
+            ],
+            "detector_issue_types": [
+              "ledger_date_gap",
+              "payment_before_invoice",
+              "wrong_tax_period"
+            ],
+            "labeled_errors": 54
+          },
+          "invoice_duplicates": {
+            "tp": 30,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "error_types": [
+              "duplicate_exact",
+              "duplicate_near"
+            ],
+            "detector_issue_types": [
+              "duplicate_exact",
+              "duplicate_near"
+            ],
+            "labeled_errors": 30
+          },
+          "duplicate_payments": {
+            "tp": 12,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "error_types": [
+              "duplicate_payment"
+            ],
+            "detector_issue_types": [
+              "duplicate_payment"
+            ],
+            "labeled_errors": 12
+          },
+          "filing_tax": {
+            "tp": 15,
+            "fp": 76,
+            "fn": 0,
+            "precision": 0.16483516483516483,
+            "recall": 1.0,
+            "f1": 0.2830188679245283,
+            "error_types": [
+              "gstr2b_tax_mismatch"
+            ],
+            "detector_issue_types": [
+              "gstr2b_tax_mismatch"
+            ],
+            "labeled_errors": 15
+          },
+          "unbooked_filing": {
+            "tp": 12,
+            "fp": 10,
+            "fn": 0,
+            "precision": 0.5454545454545454,
+            "recall": 1.0,
+            "f1": 0.7058823529411764,
+            "error_types": [
+              "in_gstr2b_not_in_books"
+            ],
+            "detector_issue_types": [
+              "in_gstr2b_not_in_books"
+            ],
+            "labeled_errors": 12
+          },
+          "gstin": {
+            "tp": 15,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "error_types": [
+              "invalid_gstin"
+            ],
+            "detector_issue_types": [
+              "invalid_gstin"
+            ],
+            "labeled_errors": 15
+          },
+          "invoice_identifier": {
+            "tp": 9,
+            "fp": 23,
+            "fn": 7,
+            "precision": 0.28125,
+            "recall": 0.5625,
+            "f1": 0.375,
+            "error_types": [
+              "invoice_id_variant"
+            ],
+            "detector_issue_types": [
+              "invoice_id_mismatch"
+            ],
+            "labeled_errors": 16
+          },
+          "unreferenced_ledger": {
+            "tp": 12,
+            "fp": 6,
+            "fn": 0,
+            "precision": 0.6666666666666666,
+            "recall": 1.0,
+            "f1": 0.8,
+            "error_types": [
+              "ledger_without_source"
+            ],
+            "detector_issue_types": [
+              "ledger_without_source"
+            ],
+            "labeled_errors": 12
+          },
+          "tax_calculation": {
+            "tp": 25,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "error_types": [
+              "miscalculated_tax"
+            ],
+            "detector_issue_types": [
+              "miscalculated_tax"
+            ],
+            "labeled_errors": 25
+          },
+          "missing_ledger": {
+            "tp": 20,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "error_types": [
+              "missing_ledger_entry"
+            ],
+            "detector_issue_types": [
+              "missing_ledger_entry"
+            ],
+            "labeled_errors": 20
+          },
+          "missing_payment": {
+            "tp": 15,
+            "fp": 28,
+            "fn": 0,
+            "precision": 0.3488372093023256,
+            "recall": 1.0,
+            "f1": 0.5172413793103449,
+            "error_types": [
+              "missing_payment"
+            ],
+            "detector_issue_types": [
+              "missing_payment"
+            ],
+            "labeled_errors": 15
+          },
+          "unreferenced_payment": {
+            "tp": 12,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "error_types": [
+              "payment_without_invoice"
+            ],
+            "detector_issue_types": [
+              "payment_without_invoice"
+            ],
+            "labeled_errors": 12
+          },
+          "supplier_filing": {
+            "tp": 45,
+            "fp": 16,
+            "fn": 0,
+            "precision": 0.7377049180327869,
+            "recall": 1.0,
+            "f1": 0.8490566037735848,
+            "error_types": [
+              "supplier_not_filed"
+            ],
+            "detector_issue_types": [
+              "missing_supplier_filing",
+              "supplier_not_filed"
+            ],
+            "labeled_errors": 45
+          },
+          "vendor_name": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 18,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "error_types": [
+              "vendor_name_variant"
+            ],
+            "detector_issue_types": [
+              "vendor_name_mismatch"
+            ],
+            "labeled_errors": 18
+          },
+          "tax_rate": {
+            "tp": 18,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "error_types": [
+              "wrong_tax_rate"
+            ],
+            "detector_issue_types": [
+              "wrong_tax_rate"
+            ],
+            "labeled_errors": 18
+          },
+          "tax_split": {
+            "tp": 15,
+            "fp": 7,
+            "fn": 0,
+            "precision": 0.6818181818181818,
+            "recall": 1.0,
+            "f1": 0.8108108108108109,
+            "error_types": [
+              "wrong_tax_split"
+            ],
+            "detector_issue_types": [
+              "wrong_tax_split"
+            ],
+            "labeled_errors": 15
+          }
+        },
+        "per_error_type": {
+          "amount_mismatch_large": {
+            "tp": 15,
+            "fp": 298,
+            "fn": 0,
+            "precision": 0.1880108991825613,
+            "recall": 1.0,
+            "f1": 0.3165137614678899,
+            "labeled_errors": 15,
+            "precision_scope": "shared payment_amount detector issue family"
+          },
+          "amount_mismatch_small": {
+            "tp": 12,
+            "fp": 298,
+            "fn": 0,
+            "precision": 0.1880108991825613,
+            "recall": 1.0,
+            "f1": 0.3165137614678899,
+            "labeled_errors": 12,
+            "precision_scope": "shared payment_amount detector issue family"
+          },
+          "bank_amount_mismatch": {
+            "tp": 12,
+            "fp": 298,
+            "fn": 0,
+            "precision": 0.1880108991825613,
+            "recall": 1.0,
+            "f1": 0.3165137614678899,
+            "labeled_errors": 12,
+            "precision_scope": "shared payment_amount detector issue family"
+          },
+          "rounding_diff": {
+            "tp": 12,
+            "fp": 298,
+            "fn": 0,
+            "precision": 0.1880108991825613,
+            "recall": 1.0,
+            "f1": 0.3165137614678899,
+            "labeled_errors": 12,
+            "precision_scope": "shared payment_amount detector issue family"
+          },
+          "short_payment_tds": {
+            "tp": 18,
+            "fp": 298,
+            "fn": 0,
+            "precision": 0.1880108991825613,
+            "recall": 1.0,
+            "f1": 0.3165137614678899,
+            "labeled_errors": 18,
+            "precision_scope": "shared payment_amount detector issue family"
+          },
+          "anomaly_approval_threshold": {
+            "tp": 9,
+            "fp": 508,
+            "fn": 6,
+            "precision": 0.08303249097472924,
+            "recall": 0.6,
+            "f1": 0.14587737843551798,
+            "labeled_errors": 15,
+            "precision_scope": "shared anomaly detector issue family",
+            "cause": "The amount rule is conservative, while the broader vendor and Isolation Forest signals add unrelated anomaly candidates."
+          },
+          "anomaly_round_number": {
+            "tp": 15,
+            "fp": 508,
+            "fn": 0,
+            "precision": 0.08303249097472924,
+            "recall": 1.0,
+            "f1": 0.15333333333333332,
+            "labeled_errors": 15,
+            "precision_scope": "shared anomaly detector issue family",
+            "cause": "Round-number detection is suppressed for vendors whose history already contains many round totals."
+          },
+          "anomaly_unusual_spike": {
+            "tp": 7,
+            "fp": 508,
+            "fn": 8,
+            "precision": 0.08303249097472924,
+            "recall": 0.4666666666666667,
+            "f1": 0.14098073555166377,
+            "labeled_errors": 15,
+            "precision_scope": "shared anomaly detector issue family",
+            "cause": "The robust-z and Isolation Forest signals are broad and miss spikes when vendor history is sparse or skewed."
+          },
+          "new_vendor_huge_invoice": {
+            "tp": 15,
+            "fp": 508,
+            "fn": 0,
+            "precision": 0.08303249097472924,
+            "recall": 1.0,
+            "f1": 0.15333333333333332,
+            "labeled_errors": 15,
+            "precision_scope": "shared anomaly detector issue family",
+            "cause": "The detector depends on the source `is_new_vendor` flag and configured threshold matching the injected high invoice."
+          },
+          "date_shift": {
+            "tp": 13,
+            "fp": 7,
+            "fn": 2,
+            "precision": 0.8813559322033898,
+            "recall": 0.8666666666666667,
+            "f1": 0.8739495798319329,
+            "labeled_errors": 15,
+            "precision_scope": "shared date_and_period detector issue family"
+          },
+          "ledger_date_gap": {
+            "tp": 15,
+            "fp": 7,
+            "fn": 0,
+            "precision": 0.8813559322033898,
+            "recall": 1.0,
+            "f1": 0.936936936936937,
+            "labeled_errors": 15,
+            "precision_scope": "shared date_and_period detector issue family"
+          },
+          "wrong_tax_period": {
+            "tp": 12,
+            "fp": 7,
+            "fn": 0,
+            "precision": 0.8813559322033898,
+            "recall": 1.0,
+            "f1": 0.936936936936937,
+            "labeled_errors": 12,
+            "precision_scope": "shared date_and_period detector issue family"
+          },
+          "payment_before_invoice": {
+            "tp": 12,
+            "fp": 7,
+            "fn": 0,
+            "precision": 0.8813559322033898,
+            "recall": 1.0,
+            "f1": 0.936936936936937,
+            "labeled_errors": 12,
+            "precision_scope": "shared date_and_period detector issue family",
+            "cause": "Detection depends on a bank candidate surviving invoice/reference blocking; unmatched references are not date-compared."
+          },
+          "duplicate_exact": {
+            "tp": 15,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 15,
+            "precision_scope": "shared invoice_duplicates detector issue family"
+          },
+          "duplicate_near": {
+            "tp": 15,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 15,
+            "precision_scope": "shared invoice_duplicates detector issue family"
+          },
+          "duplicate_payment": {
+            "tp": 12,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 12,
+            "precision_scope": "shared duplicate_payments detector issue family"
+          },
+          "gstr2b_tax_mismatch": {
+            "tp": 15,
+            "fp": 76,
+            "fn": 0,
+            "precision": 0.16483516483516483,
+            "recall": 1.0,
+            "f1": 0.2830188679245283,
+            "labeled_errors": 15,
+            "precision_scope": "shared filing_tax detector issue family"
+          },
+          "in_gstr2b_not_in_books": {
+            "tp": 12,
+            "fp": 10,
+            "fn": 0,
+            "precision": 0.5454545454545454,
+            "recall": 1.0,
+            "f1": 0.7058823529411764,
+            "labeled_errors": 12,
+            "precision_scope": "shared unbooked_filing detector issue family"
+          },
+          "invalid_gstin": {
+            "tp": 15,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 15,
+            "precision_scope": "shared gstin detector issue family",
+            "cause": "Test B GSTIN values follow different conventions; the strict 15-character/checksum rule is intentionally reported separately."
+          },
+          "invoice_id_variant": {
+            "tp": 9,
+            "fp": 23,
+            "fn": 7,
+            "precision": 0.28125,
+            "recall": 0.5625,
+            "f1": 0.375,
+            "labeled_errors": 16,
+            "precision_scope": "shared invoice_identifier detector issue family"
+          },
+          "ledger_without_source": {
+            "tp": 12,
+            "fp": 6,
+            "fn": 0,
+            "precision": 0.6666666666666666,
+            "recall": 1.0,
+            "f1": 0.8,
+            "labeled_errors": 12,
+            "precision_scope": "shared unreferenced_ledger detector issue family"
+          },
+          "miscalculated_tax": {
+            "tp": 25,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 25,
+            "precision_scope": "shared tax_calculation detector issue family"
+          },
+          "missing_ledger_entry": {
+            "tp": 20,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 20,
+            "precision_scope": "shared missing_ledger detector issue family"
+          },
+          "missing_payment": {
+            "tp": 15,
+            "fp": 28,
+            "fn": 0,
+            "precision": 0.3488372093023256,
+            "recall": 1.0,
+            "f1": 0.5172413793103449,
+            "labeled_errors": 15,
+            "precision_scope": "shared missing_payment detector issue family"
+          },
+          "payment_without_invoice": {
+            "tp": 12,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 12,
+            "precision_scope": "shared unreferenced_payment detector issue family"
+          },
+          "supplier_not_filed": {
+            "tp": 45,
+            "fp": 16,
+            "fn": 0,
+            "precision": 0.7377049180327869,
+            "recall": 1.0,
+            "f1": 0.8490566037735848,
+            "labeled_errors": 45,
+            "precision_scope": "shared supplier_filing detector issue family"
+          },
+          "vendor_name_variant": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 18,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "labeled_errors": 18,
+            "precision_scope": "shared vendor_name detector issue family",
+            "cause": "The mismatch rule targets invoice-to-filing names; equivalent company suffix/case variants are normalized and may not be surfaced."
+          },
+          "wrong_tax_rate": {
+            "tp": 18,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 18,
+            "precision_scope": "shared tax_rate detector issue family"
+          },
+          "wrong_tax_split": {
+            "tp": 15,
+            "fp": 7,
+            "fn": 0,
+            "precision": 0.6818181818181818,
+            "recall": 1.0,
+            "f1": 0.8108108108108109,
+            "labeled_errors": 15,
+            "precision_scope": "shared tax_split detector issue family",
+            "cause": "Test B uses legacy conventions that differ from the Maharashtra CGST/SGST-versus-IGST rule."
+          }
+        },
+        "weakest_error_types": [
+          {
+            "error_type": "vendor_name_variant",
+            "f1": 0.0,
+            "recall": 0.0,
+            "cause": "The mismatch rule targets invoice-to-filing names; equivalent company suffix/case variants are normalized and may not be surfaced."
+          },
+          {
+            "error_type": "anomaly_unusual_spike",
+            "f1": 0.14098073555166377,
+            "recall": 0.4666666666666667,
+            "cause": "The robust-z and Isolation Forest signals are broad and miss spikes when vendor history is sparse or skewed."
+          },
+          {
+            "error_type": "anomaly_approval_threshold",
+            "f1": 0.14587737843551798,
+            "recall": 0.6,
+            "cause": "The amount rule is conservative, while the broader vendor and Isolation Forest signals add unrelated anomaly candidates."
+          },
+          {
+            "error_type": "anomaly_round_number",
+            "f1": 0.15333333333333332,
+            "recall": 1.0,
+            "cause": "Round-number detection is suppressed for vendors whose history already contains many round totals."
+          },
+          {
+            "error_type": "new_vendor_huge_invoice",
+            "f1": 0.15333333333333332,
+            "recall": 1.0,
+            "cause": "The detector depends on the source `is_new_vendor` flag and configured threshold matching the injected high invoice."
+          }
+        ],
+        "targets": {
+          "precision_at_least_0_85": false,
+          "recall_at_least_0_90": true,
+          "both_met": false
+        }
+      },
+      "matching": {
+        "model": {
+          "tp": 2940,
+          "fp": 41,
+          "fn": 26,
+          "precision": 0.9862462260986247,
+          "recall": 0.9912339851652057,
+          "f1": 0.9887338153690938
+        },
+        "naive_exact_invoice_number_and_amount": {
+          "tp": 2701,
+          "fp": 0,
+          "fn": 265,
+          "precision": 1.0,
+          "recall": 0.9106540795684424,
+          "f1": 0.9532380448208929
+        },
+        "model_match_groups": 2918,
+        "model_matched_invoice_count": 2945,
+        "validation_threshold_curve": []
+      },
+      "many_to_many": {
+        "tp": 25,
+        "fp": 14,
+        "fn": 14,
+        "precision": 0.6410256410256411,
+        "recall": 0.6410256410256411,
+        "f1": 0.6410256410256411,
+        "exact_group_accuracy": 0.6410256410256411,
+        "expected_groups": 39,
+        "predicted_groups": 39
+      },
+      "anomaly_precision_at_k": {
+        "k": 60,
+        "predictions_available": 554,
+        "relevant_in_top_k": 40,
+        "precision_at_k": 0.6666666666666666
+      },
+      "liability_error": {
+        "net_liability": {
+          "expected_rupees": -3793246.8,
+          "predicted_rupees": -2735979.77,
+          "absolute_error_rupees": 1057267.0299999998,
+          "absolute_error_pct": 27.87235014605429
+        },
+        "itc_at_risk": {
+          "expected_rupees": 0.0,
+          "predicted_rupees": 2103704.47,
+          "absolute_error_rupees": 2103704.47,
+          "absolute_error_pct": null
+        }
+      },
+      "counts": {
+        "invoice_rows": 3030,
+        "bank_rows": 2978,
+        "truth_error_rows": 463,
+        "detected_issue_rows": 1409
+      },
+      "test_b_convention_issue_types_reported_separately": []
+    },
+    "test_b": {
+      "issue_detection": {
+        "overall": {
+          "tp": 409,
+          "fp": 4954,
+          "fn": 54,
+          "precision": 0.07626328547454783,
+          "recall": 0.8833693304535637,
+          "f1": 0.14040508067284588
+        },
+        "grouped_metrics": {
+          "payment_amount": {
+            "tp": 69,
+            "fp": 89,
+            "fn": 0,
+            "precision": 0.43670886075949367,
+            "recall": 1.0,
+            "f1": 0.6079295154185022,
+            "error_types": [
+              "amount_mismatch_large",
+              "amount_mismatch_small",
+              "bank_amount_mismatch",
+              "rounding_diff",
+              "short_payment_tds"
+            ],
+            "detector_issue_types": [
+              "invoice_total_mismatch",
+              "ledger_amount_mismatch",
+              "overpayment",
+              "short_payment"
+            ],
+            "labeled_errors": 69
+          },
+          "anomaly": {
+            "tp": 38,
+            "fp": 301,
+            "fn": 22,
+            "precision": 0.11209439528023599,
+            "recall": 0.6333333333333333,
+            "f1": 0.19047619047619047,
+            "error_types": [
+              "anomaly_approval_threshold",
+              "anomaly_round_number",
+              "anomaly_unusual_spike",
+              "new_vendor_huge_invoice"
+            ],
+            "detector_issue_types": [
+              "anomaly_approval_threshold",
+              "anomaly_behavioral",
+              "anomaly_round_number",
+              "anomaly_unusual_spike",
+              "new_vendor_huge_invoice"
+            ],
+            "labeled_errors": 60
+          },
+          "date_and_period": {
+            "tp": 54,
+            "fp": 6,
+            "fn": 0,
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526316,
+            "error_types": [
+              "date_shift",
+              "ledger_date_gap",
+              "wrong_tax_period",
+              "payment_before_invoice"
+            ],
+            "detector_issue_types": [
+              "ledger_date_gap",
+              "payment_before_invoice",
+              "wrong_tax_period"
+            ],
+            "labeled_errors": 54
+          },
+          "invoice_duplicates": {
+            "tp": 30,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "error_types": [
+              "duplicate_exact",
+              "duplicate_near"
+            ],
+            "detector_issue_types": [
+              "duplicate_exact",
+              "duplicate_near"
+            ],
+            "labeled_errors": 30
+          },
+          "duplicate_payments": {
+            "tp": 12,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "error_types": [
+              "duplicate_payment"
+            ],
+            "detector_issue_types": [
+              "duplicate_payment"
+            ],
+            "labeled_errors": 12
+          },
+          "filing_tax": {
+            "tp": 15,
+            "fp": 31,
+            "fn": 0,
+            "precision": 0.32608695652173914,
+            "recall": 1.0,
+            "f1": 0.4918032786885246,
+            "error_types": [
+              "gstr2b_tax_mismatch"
+            ],
+            "detector_issue_types": [
+              "gstr2b_tax_mismatch"
+            ],
+            "labeled_errors": 15
+          },
+          "unbooked_filing": {
+            "tp": 12,
+            "fp": 12,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666,
+            "error_types": [
+              "in_gstr2b_not_in_books"
+            ],
+            "detector_issue_types": [
+              "in_gstr2b_not_in_books"
+            ],
+            "labeled_errors": 12
+          },
+          "gstin": {
+            "tp": 14,
+            "fp": 2843,
+            "fn": 1,
+            "precision": 0.004900245012250612,
+            "recall": 0.9333333333333333,
+            "f1": 0.009749303621169915,
+            "error_types": [
+              "invalid_gstin"
+            ],
+            "detector_issue_types": [
+              "invalid_gstin"
+            ],
+            "labeled_errors": 15
+          },
+          "invoice_identifier": {
+            "tp": 11,
+            "fp": 23,
+            "fn": 5,
+            "precision": 0.3235294117647059,
+            "recall": 0.6875,
+            "f1": 0.44000000000000006,
+            "error_types": [
+              "invoice_id_variant"
+            ],
+            "detector_issue_types": [
+              "invoice_id_mismatch"
+            ],
+            "labeled_errors": 16
+          },
+          "unreferenced_ledger": {
+            "tp": 12,
+            "fp": 3,
+            "fn": 0,
+            "precision": 0.8,
+            "recall": 1.0,
+            "f1": 0.888888888888889,
+            "error_types": [
+              "ledger_without_source"
+            ],
+            "detector_issue_types": [
+              "ledger_without_source"
+            ],
+            "labeled_errors": 12
+          },
+          "tax_calculation": {
+            "tp": 25,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "error_types": [
+              "miscalculated_tax"
+            ],
+            "detector_issue_types": [
+              "miscalculated_tax"
+            ],
+            "labeled_errors": 25
+          },
+          "missing_ledger": {
+            "tp": 20,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "error_types": [
+              "missing_ledger_entry"
+            ],
+            "detector_issue_types": [
+              "missing_ledger_entry"
+            ],
+            "labeled_errors": 20
+          },
+          "missing_payment": {
+            "tp": 15,
+            "fp": 28,
+            "fn": 0,
+            "precision": 0.3488372093023256,
+            "recall": 1.0,
+            "f1": 0.5172413793103449,
+            "error_types": [
+              "missing_payment"
+            ],
+            "detector_issue_types": [
+              "missing_payment"
+            ],
+            "labeled_errors": 15
+          },
+          "unreferenced_payment": {
+            "tp": 12,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "error_types": [
+              "payment_without_invoice"
+            ],
+            "detector_issue_types": [
+              "payment_without_invoice"
+            ],
+            "labeled_errors": 12
+          },
+          "supplier_filing": {
+            "tp": 45,
+            "fp": 17,
+            "fn": 0,
+            "precision": 0.7258064516129032,
+            "recall": 1.0,
+            "f1": 0.8411214953271028,
+            "error_types": [
+              "supplier_not_filed"
+            ],
+            "detector_issue_types": [
+              "missing_supplier_filing",
+              "supplier_not_filed"
+            ],
+            "labeled_errors": 45
+          },
+          "vendor_name": {
+            "tp": 0,
+            "fp": 4,
+            "fn": 18,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "error_types": [
+              "vendor_name_variant"
+            ],
+            "detector_issue_types": [
+              "vendor_name_mismatch"
+            ],
+            "labeled_errors": 18
+          },
+          "tax_rate": {
+            "tp": 18,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "error_types": [
+              "wrong_tax_rate"
+            ],
+            "detector_issue_types": [
+              "wrong_tax_rate"
+            ],
+            "labeled_errors": 18
+          },
+          "tax_split": {
+            "tp": 7,
+            "fp": 1583,
+            "fn": 8,
+            "precision": 0.00440251572327044,
+            "recall": 0.4666666666666667,
+            "f1": 0.008722741433021807,
+            "error_types": [
+              "wrong_tax_split"
+            ],
+            "detector_issue_types": [
+              "wrong_tax_split"
+            ],
+            "labeled_errors": 15
+          }
+        },
+        "per_error_type": {
+          "amount_mismatch_large": {
+            "tp": 15,
+            "fp": 89,
+            "fn": 0,
+            "precision": 0.43670886075949367,
+            "recall": 1.0,
+            "f1": 0.6079295154185022,
+            "labeled_errors": 15,
+            "precision_scope": "shared payment_amount detector issue family"
+          },
+          "amount_mismatch_small": {
+            "tp": 12,
+            "fp": 89,
+            "fn": 0,
+            "precision": 0.43670886075949367,
+            "recall": 1.0,
+            "f1": 0.6079295154185022,
+            "labeled_errors": 12,
+            "precision_scope": "shared payment_amount detector issue family"
+          },
+          "bank_amount_mismatch": {
+            "tp": 12,
+            "fp": 89,
+            "fn": 0,
+            "precision": 0.43670886075949367,
+            "recall": 1.0,
+            "f1": 0.6079295154185022,
+            "labeled_errors": 12,
+            "precision_scope": "shared payment_amount detector issue family"
+          },
+          "rounding_diff": {
+            "tp": 12,
+            "fp": 89,
+            "fn": 0,
+            "precision": 0.43670886075949367,
+            "recall": 1.0,
+            "f1": 0.6079295154185022,
+            "labeled_errors": 12,
+            "precision_scope": "shared payment_amount detector issue family"
+          },
+          "short_payment_tds": {
+            "tp": 18,
+            "fp": 89,
+            "fn": 0,
+            "precision": 0.43670886075949367,
+            "recall": 1.0,
+            "f1": 0.6079295154185022,
+            "labeled_errors": 18,
+            "precision_scope": "shared payment_amount detector issue family"
+          },
+          "anomaly_approval_threshold": {
+            "tp": 7,
+            "fp": 301,
+            "fn": 8,
+            "precision": 0.11209439528023599,
+            "recall": 0.4666666666666667,
+            "f1": 0.18076792388718993,
+            "labeled_errors": 15,
+            "precision_scope": "shared anomaly detector issue family",
+            "cause": "The amount rule is conservative, while the broader vendor and Isolation Forest signals add unrelated anomaly candidates."
+          },
+          "anomaly_round_number": {
+            "tp": 15,
+            "fp": 301,
+            "fn": 0,
+            "precision": 0.11209439528023599,
+            "recall": 1.0,
+            "f1": 0.2015915119363395,
+            "labeled_errors": 15,
+            "precision_scope": "shared anomaly detector issue family",
+            "cause": "Round-number detection is suppressed for vendors whose history already contains many round totals."
+          },
+          "anomaly_unusual_spike": {
+            "tp": 6,
+            "fp": 301,
+            "fn": 9,
+            "precision": 0.11209439528023599,
+            "recall": 0.4,
+            "f1": 0.17511520737327188,
+            "labeled_errors": 15,
+            "precision_scope": "shared anomaly detector issue family",
+            "cause": "The robust-z and Isolation Forest signals are broad and miss spikes when vendor history is sparse or skewed."
+          },
+          "new_vendor_huge_invoice": {
+            "tp": 10,
+            "fp": 301,
+            "fn": 5,
+            "precision": 0.11209439528023599,
+            "recall": 0.6666666666666666,
+            "f1": 0.1919191919191919,
+            "labeled_errors": 15,
+            "precision_scope": "shared anomaly detector issue family",
+            "cause": "The detector depends on the source `is_new_vendor` flag and configured threshold matching the injected high invoice."
+          },
+          "date_shift": {
+            "tp": 15,
+            "fp": 6,
+            "fn": 0,
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526316,
+            "labeled_errors": 15,
+            "precision_scope": "shared date_and_period detector issue family"
+          },
+          "ledger_date_gap": {
+            "tp": 15,
+            "fp": 6,
+            "fn": 0,
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526316,
+            "labeled_errors": 15,
+            "precision_scope": "shared date_and_period detector issue family"
+          },
+          "wrong_tax_period": {
+            "tp": 12,
+            "fp": 6,
+            "fn": 0,
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526316,
+            "labeled_errors": 12,
+            "precision_scope": "shared date_and_period detector issue family"
+          },
+          "payment_before_invoice": {
+            "tp": 12,
+            "fp": 6,
+            "fn": 0,
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1": 0.9473684210526316,
+            "labeled_errors": 12,
+            "precision_scope": "shared date_and_period detector issue family",
+            "cause": "Detection depends on a bank candidate surviving invoice/reference blocking; unmatched references are not date-compared."
+          },
+          "duplicate_exact": {
+            "tp": 15,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 15,
+            "precision_scope": "shared invoice_duplicates detector issue family"
+          },
+          "duplicate_near": {
+            "tp": 15,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 15,
+            "precision_scope": "shared invoice_duplicates detector issue family"
+          },
+          "duplicate_payment": {
+            "tp": 12,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 12,
+            "precision_scope": "shared duplicate_payments detector issue family"
+          },
+          "gstr2b_tax_mismatch": {
+            "tp": 15,
+            "fp": 31,
+            "fn": 0,
+            "precision": 0.32608695652173914,
+            "recall": 1.0,
+            "f1": 0.4918032786885246,
+            "labeled_errors": 15,
+            "precision_scope": "shared filing_tax detector issue family"
+          },
+          "in_gstr2b_not_in_books": {
+            "tp": 12,
+            "fp": 12,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666,
+            "labeled_errors": 12,
+            "precision_scope": "shared unbooked_filing detector issue family"
+          },
+          "invalid_gstin": {
+            "tp": 14,
+            "fp": 2843,
+            "fn": 1,
+            "precision": 0.004900245012250612,
+            "recall": 0.9333333333333333,
+            "f1": 0.009749303621169915,
+            "labeled_errors": 15,
+            "precision_scope": "shared gstin detector issue family",
+            "cause": "Test B GSTIN values follow different conventions; the strict 15-character/checksum rule is intentionally reported separately."
+          },
+          "invoice_id_variant": {
+            "tp": 11,
+            "fp": 23,
+            "fn": 5,
+            "precision": 0.3235294117647059,
+            "recall": 0.6875,
+            "f1": 0.44000000000000006,
+            "labeled_errors": 16,
+            "precision_scope": "shared invoice_identifier detector issue family"
+          },
+          "ledger_without_source": {
+            "tp": 12,
+            "fp": 3,
+            "fn": 0,
+            "precision": 0.8,
+            "recall": 1.0,
+            "f1": 0.888888888888889,
+            "labeled_errors": 12,
+            "precision_scope": "shared unreferenced_ledger detector issue family"
+          },
+          "miscalculated_tax": {
+            "tp": 25,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 25,
+            "precision_scope": "shared tax_calculation detector issue family"
+          },
+          "missing_ledger_entry": {
+            "tp": 20,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 20,
+            "precision_scope": "shared missing_ledger detector issue family"
+          },
+          "missing_payment": {
+            "tp": 15,
+            "fp": 28,
+            "fn": 0,
+            "precision": 0.3488372093023256,
+            "recall": 1.0,
+            "f1": 0.5172413793103449,
+            "labeled_errors": 15,
+            "precision_scope": "shared missing_payment detector issue family"
+          },
+          "payment_without_invoice": {
+            "tp": 12,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 12,
+            "precision_scope": "shared unreferenced_payment detector issue family"
+          },
+          "supplier_not_filed": {
+            "tp": 45,
+            "fp": 17,
+            "fn": 0,
+            "precision": 0.7258064516129032,
+            "recall": 1.0,
+            "f1": 0.8411214953271028,
+            "labeled_errors": 45,
+            "precision_scope": "shared supplier_filing detector issue family"
+          },
+          "vendor_name_variant": {
+            "tp": 0,
+            "fp": 4,
+            "fn": 18,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "labeled_errors": 18,
+            "precision_scope": "shared vendor_name detector issue family",
+            "cause": "The mismatch rule targets invoice-to-filing names; equivalent company suffix/case variants are normalized and may not be surfaced."
+          },
+          "wrong_tax_rate": {
+            "tp": 18,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "labeled_errors": 18,
+            "precision_scope": "shared tax_rate detector issue family"
+          },
+          "wrong_tax_split": {
+            "tp": 7,
+            "fp": 1583,
+            "fn": 8,
+            "precision": 0.00440251572327044,
+            "recall": 0.4666666666666667,
+            "f1": 0.008722741433021807,
+            "labeled_errors": 15,
+            "precision_scope": "shared tax_split detector issue family",
+            "cause": "Test B uses legacy conventions that differ from the Maharashtra CGST/SGST-versus-IGST rule."
+          }
+        },
+        "weakest_error_types": [
+          {
+            "error_type": "vendor_name_variant",
+            "f1": 0.0,
+            "recall": 0.0,
+            "cause": "The mismatch rule targets invoice-to-filing names; equivalent company suffix/case variants are normalized and may not be surfaced."
+          },
+          {
+            "error_type": "wrong_tax_split",
+            "f1": 0.008722741433021807,
+            "recall": 0.4666666666666667,
+            "cause": "Test B uses legacy conventions that differ from the Maharashtra CGST/SGST-versus-IGST rule."
+          },
+          {
+            "error_type": "invalid_gstin",
+            "f1": 0.009749303621169915,
+            "recall": 0.9333333333333333,
+            "cause": "Test B GSTIN values follow different conventions; the strict 15-character/checksum rule is intentionally reported separately."
+          },
+          {
+            "error_type": "anomaly_unusual_spike",
+            "f1": 0.17511520737327188,
+            "recall": 0.4,
+            "cause": "The robust-z and Isolation Forest signals are broad and miss spikes when vendor history is sparse or skewed."
+          },
+          {
+            "error_type": "anomaly_approval_threshold",
+            "f1": 0.18076792388718993,
+            "recall": 0.4666666666666667,
+            "cause": "The amount rule is conservative, while the broader vendor and Isolation Forest signals add unrelated anomaly candidates."
+          }
+        ],
+        "targets": {
+          "precision_at_least_0_85": false,
+          "recall_at_least_0_90": false,
+          "both_met": false
+        }
+      },
+      "matching": {
+        "model": {
+          "tp": 2949,
+          "fp": 37,
+          "fn": 26,
+          "precision": 0.9876088412592097,
+          "recall": 0.9912605042016807,
+          "f1": 0.9894313034725717
+        },
+        "naive_exact_invoice_number_and_amount": {
+          "tp": 2812,
+          "fp": 0,
+          "fn": 163,
+          "precision": 1.0,
+          "recall": 0.9452100840336134,
+          "f1": 0.9718334197338864
+        },
+        "model_match_groups": 2922,
+        "model_matched_invoice_count": 2945,
+        "validation_threshold_curve": []
+      },
+      "many_to_many": {
+        "tp": 25,
+        "fp": 14,
+        "fn": 14,
+        "precision": 0.6410256410256411,
+        "recall": 0.6410256410256411,
+        "f1": 0.6410256410256411,
+        "exact_group_accuracy": 0.6410256410256411,
+        "expected_groups": 39,
+        "predicted_groups": 39
+      },
+      "anomaly_precision_at_k": {
+        "k": 60,
+        "predictions_available": 339,
+        "relevant_in_top_k": 31,
+        "precision_at_k": 0.5166666666666667
+      },
+      "liability_error": {
+        "net_liability": {
+          "expected_rupees": 3194164.46,
+          "predicted_rupees": 4126218.22,
+          "absolute_error_rupees": 932053.7600000002,
+          "absolute_error_pct": 29.17989263458276
+        },
+        "itc_at_risk": {
+          "expected_rupees": 6661206.55,
+          "predicted_rupees": 7867355.43,
+          "absolute_error_rupees": 1206148.88,
+          "absolute_error_pct": 18.107063201635746
+        }
+      },
+      "counts": {
+        "invoice_rows": 3030,
+        "bank_rows": 2987,
+        "truth_error_rows": 463,
+        "detected_issue_rows": 5363
+      },
+      "test_b_convention_issue_types_reported_separately": [
+        "wrong_tax_split",
+        "invalid_gstin"
+      ]
+    }
+  }
+}

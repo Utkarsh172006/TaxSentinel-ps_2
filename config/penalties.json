@@ -1,0 +1,11 @@
+{
+  "effective_rates": [
+    {
+      "valid_from": "2017-07-01",
+      "valid_to": null,
+      "interest_rate_annual_pct": 18.0,
+      "penalty_rate_pct": 0.0
+    }
+  ],
+  "notice": "Illustrative estimator only. Verify applicable interest and penalties against official GST Council/CBIC notifications."
+}
